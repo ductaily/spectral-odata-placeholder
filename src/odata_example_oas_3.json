@@ -1,0 +1,66 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Service for namespace PetStore",
+    "description": "This service is located at [/pet-store/](/pet-store/)",
+    "version": "2"
+  },
+  "servers": [
+    {
+      "url": "/pet-store"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Dogs",
+      "description": "Dog"
+    }
+  ],
+  "paths": {
+    "/Dogs('{localId}')": {
+      "get": {
+        "summary": "Retrieve a single dog.",
+        "tags": [
+          "Dogs"
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved dog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetStore.Dogs"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PetStore.Dogs": {
+        "title": "Dog",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2017-04-13",
+            "nullable": true
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "description": "Test"
+      }
+    }
+  }
+}
